@@ -1,16 +1,14 @@
-# Makefile for CodeBreaker Java project
+# Makefile for Matrix Functions Library
 
-# Compile the Java program
-compile:
-	javac CodeBreaker.java
+all: program
 
-# Run the compiled Java program
-run:
-	java CodeBreaker
+program: main.o
+	gcc -Wall -g -o program main.o
 
-# Clean the directory by removing the class file
+main.o: main.c prog2.h
+	gcc -Wall -g -c main.c
+
 clean:
-	rm -f *.class
+	rm -f program *.o
 
-# Default target to compile the program
-default: compile
+.PHONY: all clean
